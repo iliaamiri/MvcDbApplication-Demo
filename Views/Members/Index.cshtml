@@ -3,3 +3,10 @@
 }
 
 <h1>Hey, Here's the members list</h1>
+<a asp-controller="Members" asp-action="AddMember">Add Member</a> 
+
+@foreach (var item in ViewBag.members)
+{
+    <p>Member Information: </p>
+    <p>{item.MemberId}</p>
+}
