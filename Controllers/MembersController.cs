@@ -2,16 +2,19 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MvcDbApplication.Models;
+using MvcDbApplication.Services;
 
 namespace MvcDbApplication.Controllers;
 
 public class MembersController : Controller
 {
     private readonly ILogger<MembersController> _logger;
+    private readonly IMembersRepositry _membersRepository;
 
-    public MembersController(ILogger<MembersController> logger)
+    public MembersController(ILogger<MembersController> logger, IMembersRepositry membersRepository)
     {
         _logger = logger;
+        _membersRepository = membersRepository;
     }
 
     [Authorize]
