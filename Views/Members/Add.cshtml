@@ -1,0 +1,67 @@
+@model MvcDbApplication.Data.Baraga.Member
+@{
+    ViewData["Title"] = "Members Index Page";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="border p-3 mt-4">
+                <div class="row pb-2">
+                    <h2 class="text-primary">Add Member ➕</h2>
+                    <hr />
+                </div>
+                <form method="post">
+                    <div asp-validation-summary="All"></div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <label asp-for="FirstName"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="LastName"></label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <label asp-for="Street"></label>
+                            <input asp-for="Street" class="form-control" />
+                            <span asp-validation-for="Street" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="City"></label>
+                            <input asp-for="City" class="form-control" />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="Province"></label>
+                            <input asp-for="Province" class="form-control" />
+                            <span asp-validation-for="Province" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="PostalCode"></label>
+                            <input asp-for="PostalCode" class="form-control" />
+                            <span asp-validation-for="PostalCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <label asp-for="MobilePhone"></label>
+                            <input asp-for="MobilePhone" class="form-control" />
+                            <span asp-validation-for="MobilePhone" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 6vw">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

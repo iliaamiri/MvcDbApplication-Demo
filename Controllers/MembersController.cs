@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MvcDbApplication.Data.Baraga;
 using MvcDbApplication.Models;
 using MvcDbApplication.Services;
 
@@ -29,6 +30,41 @@ public class MembersController : Controller
         catch (Exception exception)
         {
             return Error();
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Add()
+    {
+        return await Task.Run(() =>
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception exception)
+            {
+                return Error();
+            }
+        });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Add(Member member)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(member);
+            }
+
+            var addedMember = await _membersRepository.AddMember(member);
+            return View(addedMember);
+        }
+        catch (Exception exception)
+        {
+            return BadRequest();
         }
     }
 
