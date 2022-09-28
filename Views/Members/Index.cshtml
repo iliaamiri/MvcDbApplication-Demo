@@ -25,18 +25,18 @@
                     @foreach (MvcDbApplication.Data.Baraga.Member itemObj in ViewBag.members)
                     {
                         <tr>
-                            <td>@itemObj.MemberId</td>
+                            <td>@itemObj.MemberId.ToString()</td>
                             <td>@itemObj.FirstName</td>
                             <td>@itemObj.LastName</td>
                             <td>@itemObj.Street, @itemObj.City, @itemObj.Province @itemObj.PostalCode</td>
                             <td>@itemObj.Email | @itemObj.MobilePhone</td>
                             <td width="15%">
                                 <a class="btn btn-primary" asp-controller="Members" asp-action="Edit"
-                                asp-route-id="@itemObj.MemberId">Edit 📝</a>
+                                asp-route-id="@itemObj.MemberId.ToString()">Edit 📝</a>
                             </td>
                             <td width="10%">
-                                <a class="btn btn-danger" data-item-id="@itemObj.MemberId" asp-controller="Members"
-                                asp-action="Delete" asp-route-id="@itemObj.MemberId">Delete ☠️</a>
+                                <a class="btn btn-danger" data-item-id="@itemObj.MemberId.ToString()" asp-controller="Members"
+                                asp-action="Delete" asp-route-id="@itemObj.MemberId.ToString()">Delete ☠️</a>
                             </td>
                         </tr>
                     }

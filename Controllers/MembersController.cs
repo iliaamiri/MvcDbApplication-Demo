@@ -68,6 +68,41 @@ public class MembersController : Controller
         }
     }
 
+    [HttpDelete]
+    public async Task<IActionResult> Delete(int memberId)
+    {
+        try
+        {
+            await _membersRepository.DeleteMemberById(memberId);
+            return RedirectToAction("Index");
+        }
+        catch (Exception exception)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(int? memberId)
+    {
+        try
+        {
+            if (memberId == null || memberId == 0)
+                return NotFound();
+
+            var memberToEdit = await _membersRepository.GetMemberById((int)memberId);
+            
+            if (memberToEdit == null)
+                return NotFound();
+
+            return View(memberToEdit);
+        }
+        catch (Exception exception)
+        {
+            return BadRequest();
+        }
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

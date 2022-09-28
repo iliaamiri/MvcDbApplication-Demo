@@ -5,7 +5,7 @@ namespace MvcDbApplication.Services;
 public interface IMembersRepositry {
     public Task<Member[]> GetMembers();
 
-    public Task<Member> GetMemberById(int memberId);
+    public Task<Member?> GetMemberById(int memberId);
 
     public Task UpdateMember(Member member);
 

@@ -57,7 +57,7 @@ public class MembersRepository : IMembersRepositry
         }
     }
 
-    public async Task<Member> GetMemberById(int memberId)
+    public async Task<Member?> GetMemberById(int memberId)
     {
         Member? foundMember;
         try
@@ -68,7 +68,7 @@ public class MembersRepository : IMembersRepositry
                 )
             )
             {
-                foundMember = await db.Members.FindAsync(memberId);
+                foundMember = await db.Members.FindAsync(new Member() { MemberId = memberId });
             }
         }
         catch (Exception exception)
@@ -76,11 +76,7 @@ public class MembersRepository : IMembersRepositry
             _logger.LogError(exception.Message);
             throw new Exception("Something Wrong happened");
         }
-
-        if (foundMember == null)
-        {
-            throw new Exception("Member not found");
-        }
+        
         return foundMember;
     }
 
