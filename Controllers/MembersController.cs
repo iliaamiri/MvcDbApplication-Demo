@@ -33,6 +33,7 @@ public class MembersController : Controller
         }
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> Add()
     {
@@ -49,6 +50,7 @@ public class MembersController : Controller
         });
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Add(Member member)
     {
@@ -68,6 +70,7 @@ public class MembersController : Controller
         }
     }
 
+    [Authorize]
     [HttpGet]
     [Route("[controller]/[action]/{memberId}")]
     public async Task<IActionResult> Delete(int memberId)
@@ -83,6 +86,7 @@ public class MembersController : Controller
         }
     }
 
+    [Authorize]
     [HttpGet]
     [Route("[controller]/[action]/{memberId}")]
     public async Task<IActionResult> Edit(int? memberId)
@@ -105,6 +109,7 @@ public class MembersController : Controller
         }
     }
     
+    [Authorize]
     [HttpPost]
     [Route("[controller]/[action]/{memberId}")]
     public async Task<IActionResult> Edit(Member member)
