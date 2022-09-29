@@ -59,8 +59,8 @@ public class MembersController : Controller
                 return View(member);
             }
 
-            var addedMember = await _membersRepository.AddMember(member);
-            return View(addedMember);
+            await _membersRepository.AddMember(member);
+            return RedirectToAction("Index");
         }
         catch (Exception exception)
         {
@@ -68,7 +68,8 @@ public class MembersController : Controller
         }
     }
 
-    [HttpDelete]
+    [HttpGet]
+    [Route("[controller]/[action]/{memberId}")]
     public async Task<IActionResult> Delete(int memberId)
     {
         try
@@ -83,6 +84,7 @@ public class MembersController : Controller
     }
 
     [HttpGet]
+    [Route("[controller]/[action]/{memberId}")]
     public async Task<IActionResult> Edit(int? memberId)
     {
         try
@@ -102,6 +104,28 @@ public class MembersController : Controller
             return BadRequest();
         }
     }
+    
+    [HttpPost]
+    [Route("[controller]/[action]/{memberId}")]
+    public async Task<IActionResult> Edit(Member member)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(member);
+            }
+
+            await _membersRepository.UpdateMember(member);
+
+            return RedirectToAction("Index");
+        }
+        catch (Exception exception)
+        {
+            return BadRequest();
+        }
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

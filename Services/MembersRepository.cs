@@ -46,7 +46,9 @@ public class MembersRepository : IMembersRepositry
                 )
             )
             {
-                db.Members.Remove(new Member { MemberId = memberId });
+                var member = new Member { MemberId = memberId };
+                db.Members.Attach(member);
+                db.Members.Remove(member);
                 await db.SaveChangesAsync();
             }
         }
@@ -68,7 +70,7 @@ public class MembersRepository : IMembersRepositry
                 )
             )
             {
-                foundMember = await db.Members.FindAsync(new Member() { MemberId = memberId });
+                foundMember = await db.Members.SingleOrDefaultAsync(e => e.MemberId == memberId);
             }
         }
         catch (Exception exception)
