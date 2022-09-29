@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-11">
-            <h1>Member List</h1>
-            <a asp-controller="Members" asp-action="Add">Add Member</a>
+            <h1>Members List</h1>
+            <a asp-controller="Members" asp-action="Add">Add a Member</a>
 
             <table class="table table-striped" style="width: 100%;">
                 <thead>
@@ -30,7 +30,7 @@
                             <td>@itemObj.LastName</td>
                             <td>@itemObj.Street, @itemObj.City, @itemObj.Province @itemObj.PostalCode</td>
                             <td>@itemObj.Email | @itemObj.MobilePhone</td>
-                            <td width="15%">
+                            <td width="10%">
                                 <a class="btn btn-primary" asp-controller="Members" asp-action="Edit"
                                 asp-route-id="@itemObj.MemberId.ToString()">Edit 📝</a>
                             </td>
